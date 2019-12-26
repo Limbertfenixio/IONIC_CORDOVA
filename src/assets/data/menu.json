@@ -1,0 +1,11 @@
+[
+    {
+        "icon" : "camera",
+        "name" : "Camara",
+        "route" : "/camera"
+    },{
+        "icon" : "cloud",
+        "name" : "SqLite",
+        "route" : "/sqlite"
+    }
+]

@@ -1,0 +1,7 @@
+<app-header titulo="camara"></app-header>
+
+<ion-content>
+    <ion-button (click)="getPhoto()" expand="full" color="secondary">Tomar Foto</ion-button>
+    <ion-button (click)="searchPhoto()" expand="full" color="secondary">Seleccionar Foto</ion-button>
+    <img [src]="foto" *ngIf="foto!=null">
+</ion-content>

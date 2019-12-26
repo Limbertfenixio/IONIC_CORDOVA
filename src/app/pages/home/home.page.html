@@ -1,0 +1,10 @@
+<app-header titulo="ionic cordova"></app-header>
+
+<ion-content>
+  <ion-list lines="full">
+    <ion-item [routerLink]="item.route" *ngFor="let item of menu | async">
+      <ion-icon slot="start" name="{{item.icon}}" color="primary"></ion-icon>
+      <ion-label>{{item.name}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
