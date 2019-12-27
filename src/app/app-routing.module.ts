@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'sqlite',
     loadChildren: () => import('./pages/sqlite/sqlite.module').then( m => m.SqlitePageModule)
   },
+  {
+    path: 'camera-preview',
+    loadChildren: () => import('./pages/camera-preview/camera-preview.module').then( m => m.CameraPreviewPageModule)
+  },
 
   
 ];

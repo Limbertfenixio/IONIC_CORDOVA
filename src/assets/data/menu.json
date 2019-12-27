@@ -7,5 +7,9 @@
         "icon" : "cloud",
         "name" : "SqLite",
         "route" : "/sqlite"
+    },{
+        "icon" : "camera",
+        "name" : "Camera Preview",
+        "route" : "/camera-preview"
     }
 ]
