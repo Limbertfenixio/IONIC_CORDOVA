@@ -7,6 +7,7 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { CameraPreview } from '@ionic-native/camera-preview/ngx';
+import { Push, PushOptions, PushObject } from '@ionic-native/push/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -28,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     SQLite,
     SQLitePorter,
     CameraPreview,
+    Push,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -19,8 +19,10 @@ const routes: Routes = [
     path: 'camera-preview',
     loadChildren: () => import('./pages/camera-preview/camera-preview.module').then( m => m.CameraPreviewPageModule)
   },
-
-  
+  {
+    path: 'push',
+    loadChildren: () => import('./pages/push/push.module').then( m => m.PushPageModule)
+  },
 ];
 
 @NgModule({

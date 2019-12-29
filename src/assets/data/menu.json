@@ -11,5 +11,9 @@
         "icon" : "camera",
         "name" : "Camera Preview",
         "route" : "/camera-preview"
+    },{
+        "icon" : "notifications",
+        "name" : "Push",
+        "route" : "/push"
     }
 ]

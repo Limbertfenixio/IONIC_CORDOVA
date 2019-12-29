@@ -1,0 +1,15 @@
+<ion-content>
+  <img *ngIf="status" [src]="img">
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button>
+      <ion-icon *ngIf="!status" name="reverse-camera" (click)="swithCamera()"></ion-icon>
+      <ion-icon *ngIf="status" name="close" (click)="cancel()"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon *ngIf="!status" name="camera" (click)="takePicture()"></ion-icon>
+      <ion-icon *ngIf="status" name="checkmark" (click)="savePhoto()"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

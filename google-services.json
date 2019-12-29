@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "632290133085",
+    "firebase_url": "https://ionic-cordova-c7f90.firebaseio.com",
+    "project_id": "ionic-cordova-c7f90",
+    "storage_bucket": "ionic-cordova-c7f90.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632290133085:android:3486456067effb33bbb9b4",
+        "android_client_info": {
+          "package_name": "com.limbert.ioniccordovaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632290133085-ctd9k6d8jbp7a52apg1dv8jm8n2ja2v6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPtVsEOciJvcwPNzZ2UQZg0QSKrTK4xd0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632290133085-ctd9k6d8jbp7a52apg1dv8jm8n2ja2v6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

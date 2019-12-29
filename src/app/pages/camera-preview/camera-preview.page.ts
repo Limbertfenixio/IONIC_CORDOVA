@@ -1,5 +1,6 @@
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview/ngx';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-camera-preview',
@@ -8,42 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CameraPreviewPage implements OnInit {
   
-  constructor(private cameraPreview: CameraPreview) { }
+  constructor(private cameraPreview: CameraPreview, private router: Router) { }
 
-  img: string;
-  cameraOpts: CameraPreviewOptions = {
-    x: 0,
-    y: 0,
-    width: window.screen.width,
-    height: window.screen.height,
-    camera: 'rear',
-    tapPhoto: true,
-    previewDrag: true,
-    toBack: true,
-    alpha: 1,
-  }
-
-  cameraPictureOpts: CameraPreviewPictureOptions = {
-    width: window.innerWidth,
-    height: window.innerHeight,
-    quality: 100
-  }
-
+  img: string = null;
+  
   ngOnInit() {
   }
 
+  /*
+    Recuperamos la imagen del localstorage
+  */
+  ionViewDidEnter(){
+    this.img = localStorage.getItem('img');
+    localStorage.clear();
+  } 
+
+  /**
+   * Función que se encarga de direccionar a la vista de la camara
+   */
   startCamera(){
-    this.cameraPreview.startCamera(this.cameraOpts).then((res) => {}, err => {console.log(JSON.stringify(err))})
-  }
-
-  takePicture(){
-    this.cameraPreview.takePicture(this.cameraPictureOpts).then((res) => {
-      this.img = `data:image/jpeg;base64,${res}`;
-      this.cameraPreview.stopCamera();
-    })
-  }
-
-  swithCamera(){
-    this.cameraPreview.switchCamera();
+    this.router.navigate(['camera-preview/photo']);
   }
 }
