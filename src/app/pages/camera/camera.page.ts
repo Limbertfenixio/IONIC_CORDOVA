@@ -1,3 +1,4 @@
+import { PermissionsService } from './../../services/permissions.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,7 @@ export class CameraPage implements OnInit {
 
   foto: string;
   
-  constructor(private camera: Camera, private webView: WebView) { }
+  constructor(private camera: Camera, private webView: WebView, private permissionService: PermissionsService) { }
 
   ngOnInit() {
   } 
@@ -47,18 +48,22 @@ export class CameraPage implements OnInit {
 
   */
   getPhoto(){
-    let srcType = this.camera.PictureSourceType.CAMERA;
-    let dstType = this.camera.DestinationType.FILE_URI;
-    let options = this.cameraOptions(srcType, dstType);
-    /*
-      getPicture(options).then(success, error): Toma una foto con la camara o recupera una foto de la galeria la imagen se pasa a la devolucion de llamada como codificacion en base64, string o URI, abre la camara predeterminada cuando sourceType es igual a PictureSourceType.CAMERA || PictureSourceType.PHOTOLIBRARY permite seleccionar una imagen existente 
-    */
-    this.camera.getPicture(options).then((imageData) => {
-      //this.foto = 'data:image/jpeg;base64,' + imageData;
-      this.foto = this.webView.convertFileSrc(imageData);
-    }, err =>{
-      console.log(JSON.stringify(err));
-    });
+    if(this.permissionService.checkPermission('CAMERA')){
+      let srcType = this.camera.PictureSourceType.CAMERA;
+      let dstType = this.camera.DestinationType.FILE_URI;
+      let options = this.cameraOptions(srcType, dstType);
+      /*
+        getPicture(options).then(success, error): Toma una foto con la camara o recupera una foto de la galeria la imagen se pasa a la devolucion de llamada como codificacion en base64, string o URI, abre la camara predeterminada cuando sourceType es igual a PictureSourceType.CAMERA || PictureSourceType.PHOTOLIBRARY permite seleccionar una imagen existente 
+      */
+      this.camera.getPicture(options).then((imageData) => {
+        //this.foto = 'data:image/jpeg;base64,' + imageData;
+        this.foto = this.webView.convertFileSrc(imageData);
+      }, err =>{
+        console.log(JSON.stringify(err));
+      });
+    }else{
+      this.permissionService.getPermission('CAMERA');
+    }
 
     /*
       Elimina los archivos de imagen intermedios que se guardan de forma temporal solo es soportado en la plataforma IOS

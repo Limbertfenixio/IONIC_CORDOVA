@@ -1,0 +1,12 @@
+<app-header titulo="Facebook"></app-header>
+
+<ion-content>
+  <ion-button color="primary" (click)="loginFacebook()" expand="full"><ion-icon name="logo-facebook"></ion-icon> Iniciar Sesión con Facebook</ion-button>
+  <ion-item *ngIf="showUser">
+    <ion-avatar>
+      <img [src]="user.picture.data.url" />
+    </ion-avatar>
+    <h1>{{user.name}}</h1>
+    <p>{{user.email}}</p>
+  </ion-item>
+</ion-content>

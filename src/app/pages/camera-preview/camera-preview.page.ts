@@ -1,3 +1,4 @@
+import { PermissionsService } from './../../services/permissions.service';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview/ngx';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CameraPreviewPage implements OnInit {
   
-  constructor(private cameraPreview: CameraPreview, private router: Router) { }
+  constructor(private cameraPreview: CameraPreview, private router: Router, private permissionService: PermissionsService) { }
 
   img: string = null;
   
@@ -28,6 +29,11 @@ export class CameraPreviewPage implements OnInit {
    * Función que se encarga de direccionar a la vista de la camara
    */
   startCamera(){
-    this.router.navigate(['camera-preview/photo']);
+    //Si el usuario acepta el permiso de la camara redirigimos a la pagina de la foto
+    if(this.permissionService.checkPermission('CAMERA')){
+      this.router.navigate(['camera-preview/photo']);
+    }else{
+      this.permissionService.getPermission('CAMERA');
+    }
   }
 }

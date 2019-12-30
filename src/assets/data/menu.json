@@ -15,5 +15,13 @@
         "icon" : "notifications",
         "name" : "Push",
         "route" : "/push"
+    },{
+        "icon" : "key",
+        "name" : "Permission - Diagnostic",
+        "route" : "/permissions"
+    },{
+        "icon" : "logo-facebook",
+        "name" : "Facebook",
+        "route" : "/facebook"
     }
 ]

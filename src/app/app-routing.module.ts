@@ -23,6 +23,14 @@ const routes: Routes = [
     path: 'push',
     loadChildren: () => import('./pages/push/push.module').then( m => m.PushPageModule)
   },
+  {
+    path: 'permissions',
+    loadChildren: () => import('./pages/permissions/permissions.module').then( m => m.PermissionsPageModule)
+  },
+  {
+    path: 'facebook',
+    loadChildren: () => import('./pages/facebook/facebook.module').then( m => m.FacebookPageModule)
+  },
 ];
 
 @NgModule({

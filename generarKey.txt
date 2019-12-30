@@ -1,0 +1,14 @@
+ionic cordova build --release android
+ionic-cordova
+
+keytool -genkey -v -keystore ionic-cordova.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
+  
+keytool -exportcert -alias alias_name -keystore ionic-cordova.keystore -validity 1000 | openssl sha1 -binary | openssl base64
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ionic-cordova.keystore app-release-unsigned.apk alias_name
+
+zipalign -v 4 app-release-unsigned.apk ejemplo.apk
+
+ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="1227171440814770" --variable APP_NAME="Ionic-Cordova"
+
+keytool -exportcert -alias androiddebugkey -keystore "E:\LIMBERT PRINCIPAL\ARCHIVOS DE PROGRAMACION\PROGRAMACION WEB\IONIC\IONIC_CORDOVA\platforms\android\app\build\outputs\apk\release\ionic-cordova.keystore" | "C:\Users\HP\Downloads\openssl\bin\openssl" sha1 -binary | "C:\Users\HP\Downloads\openssl\bin\openssl" base64

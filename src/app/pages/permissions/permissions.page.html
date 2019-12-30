@@ -1,0 +1,10 @@
+<app-header titulo="Android Permissions - Diagnostic"></app-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item (click)="checkPermission(item.name)" *ngFor="let item of permissions | async">
+      <ion-label >{{item.name}}</ion-label>
+      <ion-checkbox slot="end" checked="ok"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,33 @@
+[
+    {
+        "name": "CAMERA",
+        "id" : 1
+    },{
+        "name" : "READ_CALENDAR",
+        "id" : 2
+    },{
+        "name" : "WRITE_CALENDAR",
+        "id" : 3
+    },{
+        "name" : "READ_CONTACTS",
+        "id" : 4
+    },{
+        "name" : "WRITE_CONTACTS",
+        "id" : 5
+    },{
+        "name" : "GET_ACCOUNTS",
+        "id" : 6
+    },{
+        "name" : "ACCESS_FINE_LOCATION",
+        "id" : 7
+    },{
+        "name" : "ACCESS_COARSE_LOCATION",
+        "id" : 8
+    },{
+        "name" : "RECORD_AUDIO",
+        "id" : 9
+    },{
+        "name" : "READ_PHONE_STATE",
+        "id" : 10
+    }
+]

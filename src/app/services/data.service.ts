@@ -11,4 +11,8 @@ export class DataService {
   getData(){
     return this.http.get('/assets/data/menu.json');
   }
+
+  getDataPermissions(){
+    return this.http.get('/assets/data/permissions.json');
+  }
 }
