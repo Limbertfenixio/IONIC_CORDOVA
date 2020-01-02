@@ -1,0 +1,25 @@
+<app-header titulo="Barcode-Scanner"></app-header>
+
+<ion-content>
+  <ion-button (click)="scanCode()" expand="full" color="dark"><ion-icon name="barcode"></ion-icon>Escanear Código</ion-button>
+  <div *ngIf="scanData">
+    <p>Texto Escaneado: {{scanData["text"]}}</p>
+    <p>Texto Escaneado Format: {{scanData["format"]}}</p>
+  </div>
+
+  <ion-item>
+    <ion-label>Tipo de Codificación</ion-label>
+    <ion-select value="text" okText="Ok" cancelText="Cancel" (ionChange)="typeEncoded($event)">
+      <ion-select-option value="text">Texto</ion-select-option>
+      <ion-select-option value="email">Email</ion-select-option>
+      <ion-select-option value="phone">Telefono</ion-select-option>
+      <ion-select-option value="sms">SMS</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Generar valor de código QR</ion-label>
+    <ion-input type="text" [(ngModel)]="encodeData"></ion-input>
+  </ion-item>
+  <ion-button (click)="encodedText()" expand="full" color="dark"><ion-icon name="qr"></ion-icon>Generar Código QR</ion-button>
+</ion-content>

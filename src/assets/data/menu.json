@@ -23,5 +23,9 @@
         "icon" : "logo-facebook",
         "name" : "Facebook",
         "route" : "/facebook"
+    },{
+        "icon" : "barcode",
+        "name" : "Barcode",
+        "route" : "/barcode"
     }
 ]

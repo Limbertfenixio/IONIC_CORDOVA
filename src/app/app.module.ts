@@ -11,6 +11,7 @@ import { Push, PushOptions, PushObject } from '@ionic-native/push/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { Facebook } from '@ionic-native/facebook/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';

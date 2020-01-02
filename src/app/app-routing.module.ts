@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'facebook',
     loadChildren: () => import('./pages/facebook/facebook.module').then( m => m.FacebookPageModule)
   },
+  {
+    path: 'barcode',
+    loadChildren: () => import('./pages/barcode/barcode.module').then( m => m.BarcodePageModule)
+  },
 ];
 
 @NgModule({
