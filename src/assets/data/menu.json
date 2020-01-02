@@ -27,5 +27,9 @@
         "icon" : "barcode",
         "name" : "Barcode",
         "route" : "/barcode"
+    },{
+        "icon" : "pin",
+        "name" : "Geolocation",
+        "route" : "/geolocation"
     }
 ]

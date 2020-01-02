@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'barcode',
     loadChildren: () => import('./pages/barcode/barcode.module').then( m => m.BarcodePageModule)
   },
+  {
+    path: 'geolocation',
+    loadChildren: () => import('./pages/geolocation/geolocation.module').then( m => m.GeolocationPageModule)
+  },
 ];
 
 @NgModule({
