@@ -1,0 +1,19 @@
+<app-header titulo="Geocoder"></app-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input type="text" placeholder="Dirección a encontrar coordenadas" [(ngModel)]="direccion"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{forward}}</ion-label>
+  </ion-item>
+  <ion-button expand="full" (click)="getCoordinates()" shape="round" fill="outline"><ion-icon name="locate" slot="start"></ion-icon>Obtener Ubicación en coordenadas</ion-button>
+  <div #map id="map"></div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div id="address">
+      <span>{{address}}</span>
+    </div>
+  </ion-toolbar>
+</ion-footer>
