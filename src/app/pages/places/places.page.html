@@ -1,0 +1,13 @@
+<app-header titulo="Google Places"></app-header>
+
+<ion-content>
+  <ion-item>
+    <ion-searchbar placeholder="Buscar una ubicación" (ionInput)="updateSearch()" [(ngModel)]="autocomplete.input" [debounce]="250"></ion-searchbar>
+  </ion-item>
+  <ion-list [hidden]="autocompleteItems.length == 0">
+    <ion-item *ngFor="let item of autocompleteItems" (click)="goLocation(item)">
+      {{item.description}}
+    </ion-item>
+  </ion-list>
+  <div #map id="map"></div>
+</ion-content>

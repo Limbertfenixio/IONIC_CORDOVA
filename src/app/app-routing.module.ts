@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'geocoder',
     loadChildren: () => import('./pages/geocoder/geocoder.module').then( m => m.GeocoderPageModule)
   },
+  {
+    path: 'places',
+    loadChildren: () => import('./pages/places/places.module').then( m => m.PlacesPageModule)
+  },
 ];
 
 @NgModule({

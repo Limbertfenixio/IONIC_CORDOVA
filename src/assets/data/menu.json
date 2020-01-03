@@ -35,5 +35,9 @@
         "icon" : "pin",
         "name" : "Geocoder",
         "route" : "/geocoder"
+    },{
+        "icon" : "pin",
+        "name" : "Places",
+        "route" : "/places"
     }
 ]
