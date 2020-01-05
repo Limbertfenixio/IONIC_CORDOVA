@@ -2,11 +2,14 @@
 
 <ion-content>
   <ion-item>
-    <ion-searchbar placeholder="Buscar una ubicación" (ionInput)="updateSearch()" [(ngModel)]="autocomplete.input" [debounce]="250"></ion-searchbar>
+    <ion-searchbar placeholder="Buscar una ubicación" (keydown)="seachLocations($event)" [(ngModel)]="autocomplete.input" [debounce]="250" (ionChange)="seachLocations($event)"></ion-searchbar>
   </ion-item>
-  <ion-list [hidden]="autocompleteItems.length == 0">
+  <ion-list [hidden]="autocompleteItems.length == 0 && autocomplete.input == ''">
     <ion-item *ngFor="let item of autocompleteItems" (click)="goLocation(item)">
-      {{item.description}}
+      <ion-avatar slot="start">
+        <img [src]="item.icon" />
+      </ion-avatar>
+      {{item.name}}, {{item.formatted_address}}
     </ion-item>
   </ion-list>
   <div #map id="map"></div>
