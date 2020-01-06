@@ -47,6 +47,10 @@ const routes: Routes = [
     path: 'places',
     loadChildren: () => import('./pages/places/places.module').then( m => m.PlacesPageModule)
   },
+  {
+    path: 'traceroute',
+    loadChildren: () => import('./pages/traceroute/traceroute.module').then( m => m.TraceroutePageModule)
+  },
 ];
 
 @NgModule({

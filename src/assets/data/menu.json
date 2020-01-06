@@ -39,5 +39,9 @@
         "icon" : "pin",
         "name" : "Places",
         "route" : "/places"
+    },{
+        "icon" : "pin",
+        "name" : "Traceroute",
+        "route" : "/traceroute"
     }
 ]
