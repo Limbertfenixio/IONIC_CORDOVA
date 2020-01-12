@@ -43,5 +43,9 @@
         "icon" : "pin",
         "name" : "Traceroute",
         "route" : "/traceroute"
+    },{
+        "icon" : "pin",
+        "name" : "Background - Tracking",
+        "route" : "/backgroundtracking"
     }
 ]

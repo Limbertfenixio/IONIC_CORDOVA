@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'traceroute',
     loadChildren: () => import('./pages/traceroute/traceroute.module').then( m => m.TraceroutePageModule)
   },
+  {
+    path: 'backgroundtracking',
+    loadChildren: () => import('./pages/backgroundtracking/backgroundtracking.module').then( m => m.BackgroundtrackingPageModule)
+  },
 ];
 
 @NgModule({

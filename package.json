@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
     "@ionic-native/android-permissions": "^5.19.0",
+    "@ionic-native/background-geolocation": "^5.19.1",
     "@ionic-native/barcode-scanner": "^5.19.0",
     "@ionic-native/camera": "^5.19.0",
     "@ionic-native/camera-preview": "^5.19.0",
@@ -83,7 +84,8 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3"
+    "typescript": "~3.4.3",
+    "cordova-plugin-background-geolocation": "@mauron85/cordova-plugin-background-geolocation@~3.1.0"
   },
   "description": "An Ionic project",
   "cordova": {
@@ -114,7 +116,15 @@
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
       "cordova-plugin-geolocation": {},
-      "cordova-plugin-nativegeocoder": {}
+      "cordova-plugin-nativegeocoder": {},
+      "cordova-plugin-background-geolocation": {
+        "GOOGLE_PLAY_SERVICES_VERSION": "11+",
+        "ANDROID_SUPPORT_LIBRARY_VERSION": "26+",
+        "ICON": "@mipmap/ic_launcher",
+        "SMALL_ICON": "@mipmap/ic_launcher",
+        "ALWAYS_USAGE_DESCRIPTION": "App requires background tracking ",
+        "MOTION_USAGE_DESCRIPTION": "App requires motion detection"
+      }
     },
     "platforms": [
       "android"

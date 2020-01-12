@@ -13,6 +13,7 @@ import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -40,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     Facebook,
     Geolocation,
     NativeGeocoder,
+    BackgroundGeolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
