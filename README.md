@@ -66,6 +66,7 @@ npm install -g @angular/cli
         }
   //end
   ```
+  Para mas detalles de la documentación del plugin visitar [cordova-plugin-background-geolocation](https://github.com/mauron85/cordova-plugin-background-geolocation)
 ### Cordova Plugin Diagnostic
 ### Cordova Plugin Facebook
 ### Cordova Plugin Geolocation
