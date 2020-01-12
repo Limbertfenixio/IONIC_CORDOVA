@@ -32,6 +32,40 @@ npm install -g @angular/cli
 ### Cordova Plugin Background-camera-preview
 ### Cordova Plugin Background-camera
 ### Cordova Plugin Background-geolocation
+  Con este plugin obtendremos la posición actual del usuario en primer y segundo plano que ahorran bateria
+  ### Instalación :wrench:
+  Para evitar conflictos de configuración de variables evitar instalar desde la consola el plugin de cordova solamente  instalar los types
+  ```
+  npm install @ ionic-native / background-geolocation
+  ```
+  El plugin nativo debemos agregarlo en el archivo config.xml con las siguientes variables
+  Nota: para las versiones recientes de cordova para evitar conflictos con los iconos se debe cambiar a ic_launcher
+  ```
+  <plugin name="cordova-plugin-background-geolocation" spec="@mauron85/cordova-plugin-background-geolocation@~3.1.0">
+        <variable name="GOOGLE_PLAY_SERVICES_VERSION" value="11+" />
+        <variable name="ANDROID_SUPPORT_LIBRARY_VERSION" value="26+" />
+        <variable name="ICON" value="@mipmap/ic_launcher" />
+        <variable name="SMALL_ICON" value="@mipmap/ic_launcher" />
+        <variable name="ALWAYS_USAGE_DESCRIPTION" value="App requires background tracking " />
+        <variable name="MOTION_USAGE_DESCRIPTION" value="App requires motion detection" />
+  </plugin>
+  ```
+  Nota: Si existiera un conflicto con 'com.google.android.gms.common.internal.zzbq' se debe incluir este codigo manualmente en el build.gradle de platforms/android/build.gradle
+  ```
+  //start here
+        configurations.all {
+            resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+                def requested = details.requested
+                if (requested.group == 'com.google.android.gms') {
+                    details.useVersion '11.8.0'
+                }
+                if (requested.group == 'com.google.firebase') {
+                    details.useVersion '11.8.0'
+                }
+            }
+        }
+  //end
+  ```
 ### Cordova Plugin Diagnostic
 ### Cordova Plugin Facebook
 ### Cordova Plugin Geolocation
