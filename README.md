@@ -67,6 +67,11 @@ npm install -g @angular/cli
   //end
   ```
   Para mas detalles de la documentación del plugin visitar [cordova-plugin-background-geolocation](https://github.com/mauron85/cordova-plugin-background-geolocation)
+ ### Tracking Service en primer y segundo plando
+ Para poder realizar un servicio de tracking en tiempo real se debe instalar el siguiente complemento
+ ```
+  npm install --save simplify-js
+ ```
 ### Cordova Plugin Diagnostic
 ### Cordova Plugin Facebook
 ### Cordova Plugin Geolocation
