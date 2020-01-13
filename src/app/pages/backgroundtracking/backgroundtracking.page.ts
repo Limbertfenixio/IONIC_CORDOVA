@@ -1,7 +1,9 @@
+import { TrackingService } from './../../services/tracking.service';
 import { BackgroundGeolocation, BackgroundGeolocationConfig, BackgroundGeolocationResponse, BackgroundGeolocationEvents } from '@ionic-native/background-geolocation/ngx';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
 declare var google;
+declare var plugin;
 
 @Component({
   selector: 'app-backgroundtracking',
@@ -11,48 +13,65 @@ declare var google;
 export class BackgroundtrackingPage implements OnInit {
   @ViewChild('map', null) mapElement: ElementRef;
   map: any;
+  marker = null;
+  location: Geoposition = null;
   myLatLng: string[] = [];
-  constructor(private geolocation: Geolocation, private backgroundGeolocation: BackgroundGeolocation) { }
+  prevPos: Geoposition;
+  constructor(private geolocation: Geolocation, private backgroundGeolocation: BackgroundGeolocation, private tracking: TrackingService) { }
 
   ngOnInit() {
     this.loadMap();
+    
+    this.tracking.actualPos.subscribe(pos => {
+      if(pos != null){
+        this.drawRoute(pos);
+      } 
+    });
   }
 
   /**
    * Función que se encarga de cargar el mapa en pantalla
    */
   loadMap(){
-    //getCurrentPosition obtiene la ubicación actual del usuario y lo devuelve en una promesa
-    this.geolocation.getCurrentPosition().then((location) =>{
-      //Obtenemos la longitud y latitud en cordenadas
-      let latLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
-      //Opciones de visualización del mapa
-      let mapOptions = {
-        center: latLng,
-        zoom: 15,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
+    let mapOptions = {
+      center: {lat: -16.5582992,lng:-68.2113555},
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      zoom: 15
+    };
+    //Mostramos el mapa dentro del elemento html div con las opciones de mapa 
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    google.maps.event.addListenerOnce(this.map, 'tilesloaded', (map) =>{});
+  }
 
-      //Mostramos el mapa dentro del elemento html div con las opciones de mapa 
-      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-      this.map.addListener('tilesloaded', () =>{
-        console.log("accuryci", this.map);
-        
-      });
-      //Obtenemos las coordenadas en formato LatLng
-      let myLatLng = {lat: location.coords.latitude, lng: location.coords.longitude};
-      google.maps.event.addListenerOnce(this.map, 'idle', () =>{
-        //this.addMarker(myLatLng);
-      });
-      
-    }).catch(err => console.log(err));
+  drawRoute(pos: Geoposition){
+    if(this.prevPos == null){
+      this.prevPos = pos;
+    }
+    let myLatLng = {lat: pos.coords.latitude, lng: pos.coords.longitude};
+    if(this.marker != null){
+      //eliminamos el marcador anterior
+      this.marker.setMap(null);
+    }
+    this.addMarker(myLatLng)
+    
+    let polyline = new google.maps.Polyline({
+      path: [new google.maps.LatLng(this.prevPos.coords.latitude, this.prevPos.coords.longitude), new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude)],
+      map: this.map,
+      strokeColor: '#009690',
+      strokeWeight: 3,
+      strokeOpacity: 0.8,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35,
+    })
+
+    this.prevPos = pos;
   }
 
   /**
    * Función que se encarga de evaluar si la detección de posición esta habilitada y si no lo esta nos habré automáticamente la opción para habilitarla
    */
   startGeolocation(){
-    this.backgroundGeolocation.isLocationEnabled().then(rta => {
+    this.backgroundGeolocation.checkStatus().then(rta => {
       if(rta){
         this.startBackgroundGeolocation();
       }else{
@@ -80,25 +99,51 @@ export class BackgroundtrackingPage implements OnInit {
       desiredAccuracy: 10,
       stationaryRadius: 1,
       distanceFilter: 1,
-      debug: true,
+      debug: false,
       stopOnTerminate: false,
-      //Solo para Android
+      // Android only section
       locationProvider: 1,
       startForeground: true,
-      interval: 4000,
+      interval: 3000,
       fastestInterval: 5000,
-      activitiesInterval: 4000
+      activitiesInterval: 10000,
+      stopOnStillActivity: false,
+      notificationTitle: 'Tracking',
+      notificationText: 'Obteniendo Ubicacion en primer y segundo plano',
     };
 
     //Evento que va actualizando la posición del usuario
     this.backgroundGeolocation.configure(config).then(() => {
+      this.backgroundGeolocation.on(BackgroundGeolocationEvents.foreground).subscribe(() =>{
+
+      });
+      this.backgroundGeolocation.on(BackgroundGeolocationEvents.background).subscribe(() =>{
+
+      });
       this.backgroundGeolocation.on(BackgroundGeolocationEvents.location).subscribe((location: BackgroundGeolocationResponse) =>{
-        this.myLatLng.push(`${location.latitude},${location.longitude}`);
-        alert('latitud: ' + location.latitude + 'longtud: ' +location.longitude)
+        this.setLocations(location);
       });
     });
-
     this.backgroundGeolocation.start();
+  }
+
+  setLocations(location: BackgroundGeolocationResponse){
+    this.location = {
+      coords: {
+        latitude: location.latitude,
+        longitude: location.longitude,
+        accuracy: location.accuracy,
+        altitude: location.altitude,
+        speed: location.speed,
+        heading: null,
+        altitudeAccuracy: null
+      },
+      timestamp: location.time
+    };
+   
+    this.tracking.setPosBack(this.location);
+    this.tracking.startTracking();
+    //let myLatLng = {lat: location.latitude, lng: location.longitude};
   }
 
   /**
@@ -106,5 +151,27 @@ export class BackgroundtrackingPage implements OnInit {
    */
   stopBackgroundGeolocation(){
     this.backgroundGeolocation.stop();
+  }
+
+  /**
+   * Función que se encarga de colocar un marcador en la posición actual del usuario
+   * @param latLng objeto que contiene las coordenadas del usuario
+   */
+  addMarker(latLng){
+    let icon = new google.maps.MarkerImage(
+      '/assets/svg/mylocation.svg',
+      null,
+      null,
+      null,
+      new google.maps.Size(20, 20)
+    ) 
+    this.marker = new google.maps.Marker({
+      position: latLng,
+      map: this.map,
+      icon: icon,
+    });
+    //Centreamos el mapa y colocamos el marcador
+    this.map.setCenter(latLng)
+    this.marker.setMap(this.map)
   }
 }
