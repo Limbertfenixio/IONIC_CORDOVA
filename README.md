@@ -26,6 +26,7 @@ npm install -g @angular/cli
 - [Cordova Plugin Push](#cordova-plugin-push)
 - [Cordova Plugin Push](#cordova-plugin-sqlite)
 - [Cordova Plugin Push](#cordova-plugin-sqlite-porter)
+- [Cordova Plugin Google Maps](#cordova-plugin-google-maps)
 
 ### Cordova Plugin Android-permissions
 ### Cordova Plugin Background-barcode-scanner
@@ -66,6 +67,10 @@ npm install -g @angular/cli
         }
   //end
   ```
+  Incluir la libreria en los providers dentro del archivo app.module.ts
+  ```
+  import { BackgroundGeolocation } from '@ionic-native/background-geolocation/ngx';
+  ```
   Para mas detalles de la documentación del plugin visitar [cordova-plugin-background-geolocation](https://github.com/mauron85/cordova-plugin-background-geolocation)
  ### Tracking Service en primer y segundo plando
  Para poder realizar un servicio de tracking en tiempo real se debe instalar el siguiente complemento
@@ -74,8 +79,41 @@ npm install -g @angular/cli
  ```
 ### Cordova Plugin Diagnostic
 ### Cordova Plugin Facebook
+  Con este plugin tendremos acceso a la aplicación FB nativa que nos permitira integrar nuestra aplicación con esta red social
+  ### Instalación :wrench:
+  Para poder usar el complemento primero debemos crear una aplicación de Facebook dentro de la pagina web de [Facebook Develoopers](https://developers.facebook.com/apps)
+  Recuperar el App ID y el App Name
+  Configurar la plataforma android e ios con el id de la aplicación que se encuentra en el archivo config.xml
+  Instalamos el plugin y las librerias para types
+  ```
+  ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="123456789" --variable APP_NAME="myApplication"
+  npm install @ ionic-native / facebook
+  ```
+  Para mas detalles de la documentación del plugin visitar [cordova-plugin-facebook](https://github.com/jeduan/cordova-plugin-facebook4)
 ### Cordova Plugin Geolocation
 ### Cordova Plugin Native Geocoder
 ### Cordova Plugin Push
 ### Cordova Plugin Sqlite
 ### Cordova Plugin Sqlite Porter
+### Cordova Plugin Google Maps
+  Este plugin proporciona una manera facil de interactuar con las promesas y observables de angular lo que permite facilitar el uso de complementos de cambio de angular
+  ### Instalación :wrench:
+  Instalamos el plugin y las librerias para types
+  ```
+  ionic cordova plugin add cordova-plugin-googlemaps
+  npm install @ionic-native/google-maps
+  ```
+  Establecer las variables de la apiKey dentro del archivo config.xml
+  ```
+  < widget ...>
+    ...
+    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="(api key)" />
+    <preference name="GOOGLE_MAPS_IOS_API_KEY" value="(api key)" />
+    ...
+  </ widget >
+  ```
+  Incluir la libreria en los providers dentro del archivo app.module.ts
+  ```
+  import { GoogleMaps } from '@ionic-native/google-maps/ngx';
+  ```
+  Para mas detalles de la documentación del plugin visitar [google-maps](https://github.com/ionic-team/ionic-native-google-maps/blob/master/documents/README.md)
