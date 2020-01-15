@@ -29,6 +29,22 @@ npm install -g @angular/cli
 - [Cordova Plugin Google Maps](#cordova-plugin-google-maps)
 
 ### Cordova Plugin Android-permissions
+  Este plugin ayudara a manejar el nuevo mecanismo de comprobación de permisos en Android
+  ### Instalación :wrench:
+  Para evitar conflictos de configuración de variables evitar instalar desde la consola el plugin de cordova solamente  instalar los types
+  ```
+  ionic cordova plugin add cordova-plugin-android-permissions
+  npm install @ionic-native/android-permissions
+  ```
+  Desde Android 6.0 existe un nuevo mecanismo de verificación de permisos en Android estos ahora se activan cuando el usuario esta usando la aplicación.
+  ####
+  Compatible con Android SDK >= 14.
+  ####
+  Incluir la libreria en los providers dentro del archivo app.module.ts
+  ```
+  import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+  ```
+  Para mas detalles de la documentación del plugin visitar [cordova-plugin-android-permissions](https://github.com/NeoLSN/cordova-plugin-android-permissions)
 ### Cordova Plugin Background-barcode-scanner
 ### Cordova Plugin Background-camera-preview
 ### Cordova Plugin Background-camera
