@@ -45,6 +45,7 @@ npm install -g @angular/cli
   import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
   ```
   Para mas detalles de la documentación del plugin visitar [cordova-plugin-android-permissions](https://github.com/NeoLSN/cordova-plugin-android-permissions)
+  Para mas detalles de la referencia de permisos en Android visitar [Referencia de permisos en Android](https://developer.android.com/reference/android/Manifest.permission.html)
 ### Cordova Plugin Background-barcode-scanner
 ### Cordova Plugin Background-camera-preview
 ### Cordova Plugin Background-camera
@@ -67,9 +68,9 @@ npm install -g @angular/cli
         <variable name="MOTION_USAGE_DESCRIPTION" value="App requires motion detection" />
   </plugin>
   ```
-  Nota: Si existiera un conflicto con 'com.google.android.gms.common.internal.zzbq' se debe incluir este codigo manualmente en el build.gradle de platforms/android/build.gradle
+  Nota: Si existiera un conflicto con 'com.google.android.gms.common.internal.zzbq' se debe incluir este codigo manualmente en el build.gradle de platforms/android/build.gradle 
   ```
-  //start here
+  //start here repositores{
         configurations.all {
             resolutionStrategy.eachDependency { DependencyResolveDetails details ->
                 def requested = details.requested
@@ -109,6 +110,19 @@ npm install -g @angular/cli
 ### Cordova Plugin Geolocation
 ### Cordova Plugin Native Geocoder
 ### Cordova Plugin Push
+  Este plugin nos servira para registrar y recibir notificaciones
+  ### Instalación :wrench:
+  Instalamos el plugin y las librerias para types
+  ```
+  ionic cordova plugin add phonegap-plugin-push
+  npm install @ionic-native/push
+  ```
+  Para poder utilizar el servicio de notificaciones debemos dar de alta un proyecto en firebase, obtener el archivo google-services.json y por ende el sender_id de la aplicación eso lo configuramos en el siguiente enlace [FCM-Firebase](https://console.firebase.google.com/.)
+  Incluir la libreria en los providers dentro del archivo app.module.ts
+  ```
+  import { Push } from '@ionic-native/push/ngx';
+  ```
+  Para mas detalles de la documentación del plugin visitar [cordova-plugin-push]( https://github.com/phonegap/phonegap-plugin-push)
 ### Cordova Plugin Sqlite
 ### Cordova Plugin Sqlite Porter
 ### Cordova Plugin Google Maps
