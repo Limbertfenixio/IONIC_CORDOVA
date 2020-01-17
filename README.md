@@ -15,10 +15,10 @@ npm install -g @angular/cli
 ```
 ## Pruebas
 - [Cordova Plugin Android-Permissions](#cordova-plugin-android-permissions)
-- [Cordova Plugin Barcode Scanner](#cordova-plugin-background-barcode-scanner)
-- [Cordova Plugin Camera Preview](#cordova-plugin-background-camera-preview)
-- [Cordova Plugin Camera](#cordova-plugin-background-camera)
-- [Cordova Plugin Background-geolocation](#cordova-plugin-background-geolocation)
+- [Cordova Plugin Barcode Scanner](#cordova-plugin-barcode-scanner)
+- [Cordova Plugin Camera Preview](#cordova-plugin-camera-preview)
+- [Cordova Plugin Camera](#cordova-plugin--camera)
+- [Cordova Plugin Background-geolocation](#cordova-plugin-geolocation)
 - [Cordova Plugin Diagnostic](#cordova-plugin-diagnostic)
 - [Cordova Plugin Faceboook](#cordova-plugin-facebook)
 - [Cordova Plugin Geolocation](#cordova-plugin-geolocation)
@@ -161,8 +161,35 @@ npm install -g @angular/cli
   npm install @ ionic-native / facebook
   ```
   Para mas detalles de la documentación del plugin visitar [cordova-plugin-facebook](https://github.com/jeduan/cordova-plugin-facebook4)
+  
 ### Cordova Plugin Geolocation
+  Este plugin nos permite obtener las coordenadas de la ubicación actual del usuario, estas coordenadas se obtienen del gps del dispositivo o por las redes inalambricas
+  ### Instalación :wrench:
+  Instalamos el plugin y las librerias para types
+  ```
+  ionic cordova plugin add cordova-plugin-geolocation
+  npm install @ionic-native/geolocation
+  ```
+  Incluir la libreria en los providers dentro del archivo app.module.ts
+  ```
+  import { Geolocation } from '@ionic-native/geolocation/ngx';
+  ```
+  Para mas detalles de la documentación del plugin visitar [cordova-plugin-geolocation](  https://github.com/apache/cordova-plugin-geolocation)
+  
 ### Cordova Plugin Native Geocoder
+  Este plugin nos permite geocodificar las coordenadas en una dirección fisica, y una dirección fisica en coordenadas.
+  ### Instalación :wrench:
+  Instalamos el plugin y las librerias para types
+  ```
+  ionic cordova plugin add cordova-plugin-nativegeocoder
+  npm install @ionic-native/native-geocoder
+  ```
+  Incluir la libreria en los providers dentro del archivo app.module.ts
+  ```
+  import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx'
+  ```
+  Para mas detalles de la documentación del plugin visitar [cordova-plugin-native-geocoder]( https://github.com/sebastianbaar/cordova-plugin-nativegeocoder)
+  
 ### Cordova Plugin Push
   Este plugin nos servira para registrar y recibir notificaciones
   ### Instalación :wrench:
@@ -177,8 +204,35 @@ npm install -g @angular/cli
   import { Push } from '@ionic-native/push/ngx';
   ```
   Para mas detalles de la documentación del plugin visitar [cordova-plugin-push]( https://github.com/phonegap/phonegap-plugin-push)
+  
 ### Cordova Plugin Sqlite
+  Con este plugin podremos acceder a las bases de datos sql dentro del dispositivo.
+  ### Instalación :wrench:
+  Instalamos el plugin y las librerias para types
+  ```
+  ionic cordova plugin add cordova-sqlite-storage
+  npm install @ionic-native/sqlite
+  ```
+  Incluir la libreria en los providers dentro del archivo app.module.ts
+  ```
+  import { SQLite } from '@ionic-native/sqlite/ngx';
+  ```
+  Para mas detalles de la documentación del plugin visitar [cordova-plugin-sqlite-storage](  https://github.com/litehelpers/Cordova-sqlite-storage)
+
 ### Cordova Plugin Sqlite Porter
+  Este plugin nos permite hacer uso de bases de datos, importar, exportar bases de datos que esten en formato sql o json.
+  ### Instalación :wrench:
+  Instalamos el plugin y las librerias para types
+  ```
+  ionic cordova plugin add uk.co.workingedge.cordova.plugin.sqliteporter
+  npm install @ionic-native/sqlite-porter
+  ```
+  Incluir la libreria en los providers dentro del archivo app.module.ts
+  ```
+  import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+  ```
+  Para mas detalles de la documentación del plugin visitar [cordova-plugin-sqlite-porter](  https://github.com/dpa99c/cordova-sqlite-porter)
+  
 ### Cordova Plugin Google Maps
   Este plugin proporciona una manera facil de interactuar con las promesas y observables de angular lo que permite facilitar el uso de complementos de cambio de angular
   ### Instalación :wrench:
