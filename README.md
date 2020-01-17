@@ -46,9 +46,49 @@ npm install -g @angular/cli
   ```
   Para mas detalles de la documentación del plugin visitar [cordova-plugin-android-permissions](https://github.com/NeoLSN/cordova-plugin-android-permissions)
   Para mas detalles de la referencia de permisos en Android visitar [Referencia de permisos en Android](https://developer.android.com/reference/android/Manifest.permission.html)
-### Cordova Plugin Background-barcode-scanner
-### Cordova Plugin Background-camera-preview
-### Cordova Plugin Background-camera
+  
+### Cordova Plugin barcode-scanner
+  Este plugin nos permite hacer uso de la camara y poder escanera el codigo de barras o qr, nos retorna la data que contiene
+  ### Instalación :wrench:
+  Instalamos el plugin y las librerias para types
+  ```
+  ionic cordova plugin add phonegap-plugin-barcodescanner
+  npm install @ionic-native/barcode-scanner
+  ```
+  Incluir la libreria en los providers dentro del archivo app.module.ts
+  ```
+  import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+  ```
+  Para mas detalles de la documentación del plugin visitar [cordova-plugin-barcode-scanner](  https://github.com/phonegap/phonegap-plugin-barcodescanner)
+  
+### Cordova Plugin Camera-preview
+  Este plugin aparte de que nos permite hacer uso de la camara nativa del telefono, tambien nos permite personalizar la camara con componentes HTML.
+  ### Instalación :wrench:
+  Instalamos el plugin y las librerias para types
+  ```
+  ionic cordova plugin add cordova-plugin-camera-preview
+  npm install @ionic-native/camera-preview
+  ```
+  Incluir la libreria en los providers dentro del archivo app.module.ts
+  ```
+  import { CameraPreview } from '@ionic-native/camera-preview/ngx';
+  ```
+  Para mas detalles de la documentación del plugin visitar [cordova-plugin-camera-preview](  https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview)
+  
+### Cordova Plugin Camera
+  Este plugin nos permite hacer uso de la camara nativa del telefono y hacer captura de fotos y videos
+  ### Instalación :wrench:
+  Instalamos el plugin y las librerias para types
+  ```
+  ionic cordova plugin add cordova-plugin-camera
+  npm install @ionic-native/camera
+  ```
+  Incluir la libreria en los providers dentro del archivo app.module.ts
+  ```
+  import { Camera } from '@ionic-native/camera/ngx';
+  ```
+  Para mas detalles de la documentación del plugin visitar [cordova-plugin-camera]( https://github.com/apache/cordova-plugin-camera)
+  
 ### Cordova Plugin Background-geolocation
   Con este plugin obtendremos la posición actual del usuario en primer y segundo plano que ahorran bateria
   ### Instalación :wrench:
@@ -94,7 +134,21 @@ npm install -g @angular/cli
  ```
   npm install --save simplify-js
  ```
+ 
 ### Cordova Plugin Diagnostic
+  Con este plugin podremos comprobar si las funciones nativas del dispositivo estan habilitadas o no como el gps, wi-fi, bluetooth, etc
+  ### Instalación :wrench:
+  Instalamos el plugin y las librerias para types
+  ```
+  ionic cordova plugin add cordova.plugins.diagnostic
+  npm install @ionic-native/diagnostic
+  ```
+  Incluir la libreria en los providers dentro del archivo app.module.ts
+  ```
+  import { Diagnostic } from '@ionic-native/diagnostic/ngx';
+  ```
+  Para mas detalles de la documentación del plugin visitar [cordova-plugin-diagnostic](  https://github.com/dpa99c/cordova-diagnostic-plugin)
+  
 ### Cordova Plugin Facebook
   Con este plugin tendremos acceso a la aplicación FB nativa que nos permitira integrar nuestra aplicación con esta red social
   ### Instalación :wrench:
