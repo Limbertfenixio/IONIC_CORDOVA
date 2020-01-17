@@ -14,7 +14,7 @@ npm install -g ionic
 npm install -g @angular/cli
 ```
 ## Pruebas
-- [Cordova Plugin Android-Permissions](#cordova-plugin-background-android-permissions)
+- [Cordova Plugin Android-Permissions](#cordova-plugin-android-permissions)
 - [Cordova Plugin Barcode Scanner](#cordova-plugin-background-barcode-scanner)
 - [Cordova Plugin Camera Preview](#cordova-plugin-background-camera-preview)
 - [Cordova Plugin Camera](#cordova-plugin-background-camera)
@@ -24,8 +24,8 @@ npm install -g @angular/cli
 - [Cordova Plugin Geolocation](#cordova-plugin-geolocation)
 - [Cordova Plugin Native Geocoder](#cordova-plugin-native-geocoder)
 - [Cordova Plugin Push](#cordova-plugin-push)
-- [Cordova Plugin Push](#cordova-plugin-sqlite)
-- [Cordova Plugin Push](#cordova-plugin-sqlite-porter)
+- [Cordova Plugin Sqlite](#cordova-plugin-sqlite)
+- [Cordova Plugin Sqlite Porter](#cordova-plugin-sqlite-porter)
 - [Cordova Plugin Google Maps](#cordova-plugin-google-maps)
 
 ### Cordova Plugin Android-permissions
