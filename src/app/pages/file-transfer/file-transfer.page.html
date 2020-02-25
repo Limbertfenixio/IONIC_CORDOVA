@@ -1,0 +1,6 @@
+<app-header titulo="File - Transfer"></app-header>
+<ion-content>
+  <ion-button (click)="presentActionSheet()" expand="full" color="secondary">Tomar Foto</ion-button>
+  <ion-button expand="full" *ngIf="foto!=null" (click)="upload()"><ion-icon name="camera"></ion-icon>Subir Foto</ion-button>
+  <img [src]="foto" *ngIf="foto!=null">
+</ion-content>

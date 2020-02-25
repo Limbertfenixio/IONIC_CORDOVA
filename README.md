@@ -27,6 +27,7 @@ npm install -g @angular/cli
 - [Cordova Plugin Sqlite](#cordova-plugin-sqlite)
 - [Cordova Plugin Sqlite Porter](#cordova-plugin-sqlite-porter)
 - [Cordova Plugin Google Maps](#cordova-plugin-google-maps)
+- [Cordova Plugin File-Transfer](#cordova-plugin-file-transfer)
 
 ### Cordova Plugin Android-permissions
   Este plugin ayudara a manejar el nuevo mecanismo de comprobación de permisos en Android
@@ -255,3 +256,18 @@ npm install -g @angular/cli
   import { GoogleMaps } from '@ionic-native/google-maps/ngx';
   ```
   Para mas detalles de la documentación del plugin visitar [google-maps](https://github.com/ionic-team/ionic-native-google-maps/blob/master/documents/README.md)
+
+### Cordova Plugin File - Transfer
+  Este plugin se utiliza para enviar y recibir archivos desde un servidor a nuestro telefono movil de manera sencilla.
+  ### Instalación :wrench:
+  Instalamos el plugin y las librerias para types
+  ```
+  ionic cordova plugin add cordova-plugin-file-transfer
+  npm install @ionic-native/file-transfer
+  ```
+  ####
+  Incluir la libreria en los providers dentro del archivo app.module.ts
+  ```
+  import { FileTransfer} from '@ionic-native/file-transfer/ngx';
+  ```
+  Para mas detalles de la documentación del plugin visitar [cordova-plugin-android-permissions](https://github.com/apache/cordova-plugin-file-transfer)

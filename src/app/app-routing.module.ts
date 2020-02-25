@@ -55,6 +55,10 @@ const routes: Routes = [
     path: 'backgroundtracking',
     loadChildren: () => import('./pages/backgroundtracking/backgroundtracking.module').then( m => m.BackgroundtrackingPageModule)
   },
+  {
+    path: 'file-transfer',
+    loadChildren: () => import('./pages/file-transfer/file-transfer.module').then( m => m.FileTransferPageModule)
+  }
 ];
 
 @NgModule({

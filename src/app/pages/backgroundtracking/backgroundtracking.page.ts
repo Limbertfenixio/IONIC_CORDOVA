@@ -40,10 +40,14 @@ export class BackgroundtrackingPage implements OnInit {
     };
     //Mostramos el mapa dentro del elemento html div con las opciones de mapa 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    google.maps.event.addListenerOnce(this.map, 'tilesloaded', (map) =>{});
   }
 
+  /**
+   * Función que se encarga de trazar una polilinea por las rutas del tracking
+   * @param pos parametro de tipo Geoposition que contiene datos de la ubicación actual
+   */
   drawRoute(pos: Geoposition){
+    //Si la posición anterior es null toma el valor de la primera posición
     if(this.prevPos == null){
       this.prevPos = pos;
     }
@@ -53,7 +57,7 @@ export class BackgroundtrackingPage implements OnInit {
       this.marker.setMap(null);
     }
     this.addMarker(myLatLng)
-    
+    //Agregamos una polylinea para ir trazando la ruta del tracking
     let polyline = new google.maps.Polyline({
       path: [new google.maps.LatLng(this.prevPos.coords.latitude, this.prevPos.coords.longitude), new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude)],
       map: this.map,
@@ -63,7 +67,6 @@ export class BackgroundtrackingPage implements OnInit {
       fillColor: '#FF0000',
       fillOpacity: 0.35,
     })
-
     this.prevPos = pos;
   }
 
@@ -114,12 +117,11 @@ export class BackgroundtrackingPage implements OnInit {
 
     //Evento que va actualizando la posición del usuario
     this.backgroundGeolocation.configure(config).then(() => {
-      this.backgroundGeolocation.on(BackgroundGeolocationEvents.foreground).subscribe(() =>{
-
-      });
-      this.backgroundGeolocation.on(BackgroundGeolocationEvents.background).subscribe(() =>{
-
-      });
+      //actualizamos la posición en primer plano
+      this.backgroundGeolocation.on(BackgroundGeolocationEvents.foreground).subscribe(() =>{});
+      //actualizamos la posición en segundo plano
+      this.backgroundGeolocation.on(BackgroundGeolocationEvents.background).subscribe(() =>{});
+      //actualizamos la posición cada vez que obtenemos el locatión
       this.backgroundGeolocation.on(BackgroundGeolocationEvents.location).subscribe((location: BackgroundGeolocationResponse) =>{
         this.setLocations(location);
       });
@@ -127,6 +129,10 @@ export class BackgroundtrackingPage implements OnInit {
     this.backgroundGeolocation.start();
   }
 
+  /**
+   * Función que se encarga de establecer la ubicación actual e ir activado el tracking
+   * @param location Parametro de tipo BackgroundGeolocationResponse que contiene datos de la ubicación actual
+   */
   setLocations(location: BackgroundGeolocationResponse){
     this.location = {
       coords: {
@@ -143,7 +149,6 @@ export class BackgroundtrackingPage implements OnInit {
    
     this.tracking.setPosBack(this.location);
     this.tracking.startTracking();
-    //let myLatLng = {lat: location.latitude, lng: location.longitude};
   }
 
   /**

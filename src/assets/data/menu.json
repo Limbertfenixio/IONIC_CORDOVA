@@ -47,5 +47,9 @@
         "icon" : "pin",
         "name" : "Background - Tracking",
         "route" : "/backgroundtracking"
+    },{
+        "icon" : "document",
+        "name" : "FileTransfer",
+        "route" : "/file-transfer"
     }
 ]
