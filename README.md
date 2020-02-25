@@ -257,7 +257,7 @@ npm install -g @angular/cli
   ```
   Para mas detalles de la documentación del plugin visitar [google-maps](https://github.com/ionic-team/ionic-native-google-maps/blob/master/documents/README.md)
 
-### Cordova Plugin File - Transfer
+### Cordova Plugin File-Transfer
   Este plugin se utiliza para enviar y recibir archivos desde un servidor a nuestro telefono movil de manera sencilla.
   ### Instalación :wrench:
   Instalamos el plugin y las librerias para types
