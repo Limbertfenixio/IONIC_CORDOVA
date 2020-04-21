@@ -57,7 +57,6 @@ export class FileChooserPage implements OnInit {
     this.filePath.resolveNativePath(this.fileUri).then((nativePath) => {
       this.base64.encodeFile(nativePath).then((base64string) => {
         var dataBase64 = base64string.split('base64,')[1];
-        //alert(base64string)
         this.img = 'data:image/jpeg;base64,' + dataBase64;
         this.uploadService.uploadImgBase64({img: dataBase64,name: Math.random().toString()});
       }, err => alert(err))
