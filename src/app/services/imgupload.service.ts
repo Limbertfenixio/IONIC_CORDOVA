@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 
@@ -7,7 +8,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 export class ImguploadService {
   //Url del servidor
   apiURL = 'http://192.168.0.13:3000/';
-  constructor(private transfer: FileTransfer) { }
+  constructor(private transfer: FileTransfer, private http: HttpClient) { }
 
   /**
    * 
@@ -34,5 +35,13 @@ export class ImguploadService {
  
     // Usamos el filetransfer para subir la imagen al servidor
     return fileTransfer.upload(targetPath, url, options);
+  }
+
+  uploadImgBase64(img){
+    return this.http.post(this.apiURL + "api/image", img).subscribe();
+  }
+
+  getIImgBase64(name){
+    return this.http.get(this.apiURL + "api/getimage/" + name);
   }
 }

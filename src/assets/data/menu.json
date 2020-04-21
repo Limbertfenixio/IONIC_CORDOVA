@@ -51,5 +51,9 @@
         "icon" : "document",
         "name" : "FileTransfer",
         "route" : "/file-transfer"
+    },{
+        "icon" : "folder",
+        "name" : "FileChooser",
+        "route" : "/file-chooser"
     }
 ]

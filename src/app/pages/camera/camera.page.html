@@ -4,4 +4,8 @@
     <ion-button (click)="getPhoto()" expand="full" color="secondary">Tomar Foto</ion-button>
     <ion-button (click)="searchPhoto()" expand="full" color="secondary">Seleccionar Foto</ion-button>
     <img [src]="foto" *ngIf="foto!=null">
+    <ion-input type="text" [(ngModel)]="name" placeholder="name"></ion-input>
+    <ion-button (click)="sendPhotoBase64()" expand="full" color="success">Enviar foto al servidor</ion-button>
+    <ion-button (click)="getPhotoServerBase64()" expand="full" color="primary">Mostrar foto del servidor</ion-button>
+    <img [src]="fotoBase64" *ngIf="fotoBase64!=null">
 </ion-content>

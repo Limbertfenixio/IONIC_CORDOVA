@@ -1,0 +1,10 @@
+<app-header titulo="File - Chooser"></app-header>
+<ion-content>
+  <ion-button (click)="openMusic()" expand="full" color="primary" shape="round" fill="outline">Abrir Archivos de Música</ion-button>
+  <ion-button (click)="openVideo()" expand="full" color="secondary" shape="round" fill="outline">Abrir Archivos de Video</ion-button>
+  <ion-button (click)="openDocument()" expand="full" color="danger" shape="round" fill="outline">Abrir Archivos de Documentos</ion-button>
+  <ion-button (click)="openImage()" expand="full" color="warning" shape="round" fill="outline">Abrir Archivos de Imágenes</ion-button>
+  <ion-button (click)="openAll()" expand="full" color="tertiary" shape="round" fill="outline">Abrir todo tipo de archivo</ion-button>
+  <img *ngIf="img!=null" [src]="img">
+  <ion-button (click)="uploadImage()" expand="full" color="success" shape="round" fill="outline">Subir Imágenes al server</ion-button>
+</ion-content>

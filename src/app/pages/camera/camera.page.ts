@@ -1,3 +1,4 @@
+import { ImguploadService } from './../../services/imgupload.service';
 import { PermissionsService } from './../../services/permissions.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
@@ -11,8 +12,11 @@ import { Component, OnInit } from '@angular/core';
 export class CameraPage implements OnInit {
 
   foto: string;
+  fotoBase64: string;
+  name: string;
+  base64up: string;
   
-  constructor(private camera: Camera, private webView: WebView, private permissionService: PermissionsService) { }
+  constructor(private camera: Camera, private webView: WebView, private permissionService: PermissionsService, private uploadService: ImguploadService) { }
 
   ngOnInit() {
   } 
@@ -49,22 +53,23 @@ export class CameraPage implements OnInit {
   */
   getPhoto(){
     if(this.permissionService.checkPermission('CAMERA')){
-      let srcType = this.camera.PictureSourceType.CAMERA;
-      let dstType = this.camera.DestinationType.FILE_URI;
-      let options = this.cameraOptions(srcType, dstType);
-      /*
-        getPicture(options).then(success, error): Toma una foto con la camara o recupera una foto de la galeria la imagen se pasa a la devolucion de llamada como codificacion en base64, string o URI, abre la camara predeterminada cuando sourceType es igual a PictureSourceType.CAMERA || PictureSourceType.PHOTOLIBRARY permite seleccionar una imagen existente 
-      */
-      this.camera.getPicture(options).then((imageData) => {
-        //this.foto = 'data:image/jpeg;base64,' + imageData;
-        this.foto = this.webView.convertFileSrc(imageData);
-      }, err =>{
-        console.log(JSON.stringify(err));
-      });
+      
     }else{
       this.permissionService.getPermission('CAMERA');
     }
-
+    let srcType = this.camera.PictureSourceType.CAMERA;
+    let dstType = this.camera.DestinationType.DATA_URL;
+    let options = this.cameraOptions(srcType, dstType);
+    /*
+      getPicture(options).then(success, error): Toma una foto con la camara o recupera una foto de la galeria la imagen se pasa a la devolucion de llamada como codificacion en base64, string o URI, abre la camara predeterminada cuando sourceType es igual a PictureSourceType.CAMERA || PictureSourceType.PHOTOLIBRARY permite seleccionar una imagen existente 
+    */
+    this.camera.getPicture(options).then((imageData: any) => {
+      this.base64up = imageData;
+      this.foto = 'data:image/jpeg;base64,' + imageData;
+      //this.foto = this.webView.convertFileSrc(imageData);
+    }, err =>{
+      console.log(JSON.stringify(err));
+    });
     /*
       Elimina los archivos de imagen intermedios que se guardan de forma temporal solo es soportado en la plataforma IOS
     
@@ -78,7 +83,18 @@ export class CameraPage implements OnInit {
     let dstType = this.camera.DestinationType.DATA_URL;
     let options = this.cameraOptions(srcType, dstType);
     this.camera.getPicture(options).then((imageData) => {
+      this.base64up = imageData;
       this.foto = 'data:image/jpeg;base64,' + imageData;
     }, err => console.log(JSON.stringify(err)));
+  }
+
+  sendPhotoBase64(){
+    this.uploadService.uploadImgBase64({img: this.base64up, name: this.name});
+  }
+
+  getPhotoServerBase64(){
+    this.uploadService.getIImgBase64(this.name).subscribe((data: any) => {
+      this.fotoBase64 = data.image;   
+    })
   }
 }

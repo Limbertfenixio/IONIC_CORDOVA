@@ -58,6 +58,10 @@ const routes: Routes = [
   {
     path: 'file-transfer',
     loadChildren: () => import('./pages/file-transfer/file-transfer.module').then( m => m.FileTransferPageModule)
+  },
+  {
+    path: 'file-chooser',
+    loadChildren: () => import('./pages/file-chooser/file-chooser.module').then( m => m.FileChooserPageModule)
   }
 ];
 
